@@ -46,7 +46,7 @@ class QuantumChartTheme extends ChartTheme {
 
   @override
   String getColorForKey(key, [int state = 0]) {
-    var result = _scale.scale(key);
+    var result = _scale.scale(key as Comparable);
     return result is Iterable ? colorForState(result, state) : result as String;
   }
 

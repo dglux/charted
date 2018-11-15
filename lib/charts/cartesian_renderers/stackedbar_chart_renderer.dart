@@ -59,8 +59,8 @@ class StackedBarChartRenderer extends CartesianRendererBase {
       ..attrWithCallback(
           'transform',
           (d, i, c) => verticalBars
-              ? 'translate(${dimensionScale.scale(dimensionVals[i])}, 0)'
-              : 'translate(0, ${dimensionScale.scale(dimensionVals[i])})');
+              ? 'translate(${dimensionScale.scale(dimensionVals[i] as Comparable)}, 0)'
+              : 'translate(0, ${dimensionScale.scale(dimensionVals[i] as Comparable)})');
     groups.attrWithCallback('data-row', (d, i, e) => i);
     groups.exit.remove();
 
@@ -69,8 +69,8 @@ class StackedBarChartRenderer extends CartesianRendererBase {
         ..attrWithCallback(
             'transform',
             (d, i, c) => verticalBars
-                ? 'translate(${dimensionScale.scale(dimensionVals[i])}, 0)'
-                : 'translate(0, ${dimensionScale.scale(dimensionVals[i])})')
+                ? 'translate(${dimensionScale.scale(dimensionVals[i] as Comparable)}, 0)'
+                : 'translate(0, ${dimensionScale.scale(dimensionVals[i] as Comparable)})')
         ..duration(theme.transitionDurationMilliseconds);
     }
 
@@ -102,8 +102,8 @@ class StackedBarChartRenderer extends CartesianRendererBase {
     var prevAllZeroHeight = true;
     num prevOffset = 0;
     var getBarLength = (d, i) {
-      if (!verticalBars) return measureScale.scale(d).round();
-      var retval = rect.height - (measureScale.scale(d) as num).round();
+      if (!verticalBars) return measureScale.scale(d as Comparable).round();
+      var retval = rect.height - (measureScale.scale(d as Comparable) as num).round();
       if (i != 0) {
         // If previous bars has 0 height, don't offset for spacing
         // If any of the previous bar has non 0 height, do the offset.
@@ -151,14 +151,14 @@ class StackedBarChartRenderer extends CartesianRendererBase {
         if (i == 0) {
           yPos = (measureScale.scale(0) as num).round();
         }
-        return yPos -= (rect.height - (measureScale.scale(d) as num).round());
+        return yPos -= (rect.height - (measureScale.scale(d as Comparable) as num).round());
       } else {
         if (i == 0) {
           // 1 to not overlap the axis line.
           yPos = 1;
         }
         var pos = yPos;
-        yPos += (measureScale.scale(d) as num).round();
+        yPos += (measureScale.scale(d as Comparable) as num).round();
         // Check if after adding the height of the bar, if y has changed, if
         // changed, we offset for space between the bars.
         if (yPos != pos) {

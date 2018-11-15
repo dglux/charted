@@ -79,7 +79,7 @@ class StackedLineChartRenderer extends CartesianRendererBase {
     // represent data.
     if (trackDataPoints) {
       _xPositions = x
-          .map((val) => (dimensionScale.scale(val) + rangeBandOffset) as num)
+          .map((val) => (dimensionScale.scale(val as Comparable) + rangeBandOffset) as num)
           .toList();
     }
 
@@ -89,13 +89,13 @@ class StackedLineChartRenderer extends CartesianRendererBase {
           // should be drawn backword. The second part is the accumulated values
           // that should be drawn forward.
           var xval = i < x.length ? x[x.length - i - 1] : x[i - x.length];
-          return (dimensionScale.scale(xval) as num) + rangeBandOffset;
+          return (dimensionScale.scale(xval as Comparable) as num) + rangeBandOffset;
         },
-        yValueAccessor: (d, i) => measureScale.scale(d) as num);
+        yValueAccessor: (d, i) => measureScale.scale(d as Comparable) as num);
     var strokeLine = new SvgLine(
         xValueAccessor: (d, i) =>
-            (dimensionScale.scale(x[i]) as num) + rangeBandOffset,
-        yValueAccessor: (d, i) => measureScale.scale(d) as num);
+            (dimensionScale.scale(x[i] as Comparable) as num) + rangeBandOffset,
+        yValueAccessor: (d, i) => measureScale.scale(d as Comparable) as num);
 
     // Add lines and hook up hover and selection events.
     var svgLines =

@@ -68,7 +68,7 @@ class TimeScale extends BaseLinearScale {
 
   @override
   num scale(Object val) =>
-      super.scale(val is DateTime ? val.millisecondsSinceEpoch : val);
+      super.scale(val is DateTime ? val.millisecondsSinceEpoch : val as num);
 
   @override
   set domain(Iterable<dynamic> value) {
@@ -140,7 +140,7 @@ class TimeScale extends BaseLinearScale {
               (date) => interval.floor(date).millisecondsSinceEpoch,
               (date) => interval.ceil(date).millisecondsSinceEpoch));
     }
-    return domain;
+    return domain.toList();
   }
 
   @override

@@ -70,7 +70,7 @@ class LogScale implements Scale<num, num> {
   }
 
   @override
-  Iterable<num> get domain => _domain;
+  List<num> get domain => _domain;
 
   @override
   set range(Iterable<num> newRange) {

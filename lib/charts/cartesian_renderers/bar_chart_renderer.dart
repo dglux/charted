@@ -59,8 +59,8 @@ class BarChartRenderer extends CartesianRendererBase {
       ..attrWithCallback(
           'transform',
           (d, i, c) => verticalBars
-              ? 'translate(${dimensionScale.scale(dimensionVals[i])}, 0)'
-              : 'translate(0, ${dimensionScale.scale(dimensionVals[i])})');
+              ? 'translate(${dimensionScale.scale(dimensionVals[i] as Comparable)}, 0)'
+              : 'translate(0, ${dimensionScale.scale(dimensionVals[i] as Comparable)})');
     groups.attrWithCallback('data-row', (d, i, e) => i);
     groups.exit.remove();
 
@@ -69,8 +69,8 @@ class BarChartRenderer extends CartesianRendererBase {
         ..attrWithCallback(
             'transform',
             (d, i, c) => verticalBars
-                ? 'translate(${dimensionScale.scale(dimensionVals[i])}, 0)'
-                : 'translate(0, ${dimensionScale.scale(dimensionVals[i])})')
+                ? 'translate(${dimensionScale.scale(dimensionVals[i] as Comparable)}, 0)'
+                : 'translate(0, ${dimensionScale.scale(dimensionVals[i] as Comparable)})')
         ..duration(theme.transitionDurationMilliseconds);
     }
 

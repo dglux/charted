@@ -82,9 +82,9 @@ class BubbleChartRenderer extends CartesianRendererBase {
     measures.each((d, i, e) {
       e.attributes
         ..['transform'] = 'translate('
-            '${xDimensionScale.scale(xDimensionVals[i])},'
-            '${yDimensionScale.scale(yDimensionVals[i])})'
-        ..['r'] = '${bubbleRadiusScale.scale(d) * bubbleRadiusFactor}'
+            '${xDimensionScale.scale(xDimensionVals[i] as Comparable)},'
+            '${yDimensionScale.scale(yDimensionVals[i] as Comparable)})'
+        ..['r'] = '${bubbleRadiusScale.scale(d as Comparable) * bubbleRadiusFactor}'
         ..['data-row'] = i.toString();
     });
     measures.exit.remove();

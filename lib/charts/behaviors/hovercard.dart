@@ -212,7 +212,7 @@ class Hovercard implements ChartBehavior {
     var rowData = area.data.rows.elementAt(row), isNegative = false;
     num measurePosition = 0,
         dimensionPosition =
-            dimensionScale.scale(rowData.elementAt(dimensionCol)) +
+            dimensionScale.scale(rowData.elementAt(dimensionCol) as Comparable) +
                 dimensionCenterOffset;
 
     if (_isMultiValue) {

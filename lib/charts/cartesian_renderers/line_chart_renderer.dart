@@ -71,13 +71,13 @@ class LineChartRenderer extends CartesianRendererBase {
     // represent data.
     if (trackDataPoints) {
       _xPositions =
-          x.map((val) => dimensionScale.scale(val) + rangeBandOffset).toList();
+          x.map((val) => dimensionScale.scale(val as Comparable) + rangeBandOffset).toList();
     }
 
     var line = new SvgLine(
         xValueAccessor: (d, i) =>
-            (dimensionScale.scale(x[i]) as num) + rangeBandOffset,
-        yValueAccessor: (d, i) => measureScale.scale(d) as num);
+            (dimensionScale.scale(x[i] as Comparable) as num) + rangeBandOffset,
+        yValueAccessor: (d, i) => measureScale.scale(d as Comparable) as num);
 
     // Add lines and hook up hover and selection events.
     var svgLines = root.selectAll('.line-rdr-line').data(lines);

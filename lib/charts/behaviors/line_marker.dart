@@ -61,7 +61,7 @@ class LineMarker implements ChartBehavior {
     var dimensionAtBottom = index == 1 && _isLeftAxisPrimary ||
             index == 0 && !_isLeftAxisPrimary,
         scale = _area.dimensionScales.elementAt(index),
-        scaled = scale.scale(positions[column]) as num,
+        scaled = scale.scale(positions[column] as Comparable) as num,
         theme = _area.theme.getDimensionAxisTheme(),
         renderAreaRect = _area.layout.renderArea,
         left = renderAreaRect.x,

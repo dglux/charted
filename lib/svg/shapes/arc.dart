@@ -84,7 +84,7 @@ class SvgArc implements SvgShape {
   List centroid(d, int i, Element e) {
     var r = (innerRadiusCallback(d, i, e) + outerRadiusCallback(d, i, e)) / 2,
         a = (startAngleCallback(d, i, e) + endAngleCallback(d, i, e)) / 2 -
-            math.PI / 2;
+            math.pi / 2;
     return [math.cos(a) * r, math.sin(a) * r];
   }
 

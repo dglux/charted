@@ -46,7 +46,7 @@ class DefaultChartAxisImpl {
 
     // Sets the domain if not using a custom scale.
     if (config == null || (config != null && config.scale == null)) {
-      scale.domain = domain;
+      scale.domain = domain.toList().cast<Comparable>();
       scale.nice = !_isDimension &&
           !(config?.forcedTicksCount != null && config.forcedTicksCount > 0);
     }

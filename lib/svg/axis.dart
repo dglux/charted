@@ -91,7 +91,7 @@ class SvgAxis {
         ellipsized = axisTicksBuilder.shortenedTicks;
 
     // Need to wrap the function `current.scale` to avoid fuzzy arrow.
-    dynamic Function(dynamic) fn = (value) => current.scale(value);
+    dynamic Function(dynamic) fn = (value) => current.scale(value as Comparable);
 
     var ticks = group.selectAll('.tick').data(values, fn);
     var exit = ticks.exit;
@@ -153,8 +153,8 @@ class SvgAxis {
       if (isInitialRender) {
         var dx = current is OrdinalScale ? current.rangeBand / 2 : 0;
         e.attributes['transform'] = isHorizontal
-            ? 'translate(${current.scale(d) + dx},0)'
-            : 'translate(0,${current.scale(d) + dx})';
+            ? 'translate(${current.scale(d as Comparable) + dx},0)'
+            : 'translate(0,${current.scale(d as Comparable) + dx})';
       } else {
         e.style.setProperty('opacity', '1.0');
       }
@@ -165,7 +165,7 @@ class SvgAxis {
       var transformFn;
       if (current is OrdinalScale && current.rangeBand != 0) {
         var dx = current.rangeBand / 2;
-        transformFn = (d) => current.scale(d) + dx;
+        transformFn = (d) => current.scale(d as Comparable) + dx;
       } else if (older is OrdinalScale && older.rangeBand != 0) {
         older = current;
       } else {

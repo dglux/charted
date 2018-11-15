@@ -98,10 +98,7 @@ class _AggregationItemImpl extends Observable implements AggregationItem {
 
     // Try parsing int if every element in factFields is int.
     if (model._factFields.every((e) => e is int)) {
-      factIndex = model._factFields.indexOf(int.parse(factName, onError: (e) {
-        throw new ArgumentError('Type of factFields are int but factName' +
-            'contains non int value');
-      }));
+      factIndex = model._factFields.indexOf(int.parse(factName));
     }
     if (factIndex == -1) {
       throw new ArgumentError('Model not configured for ${factName}');
